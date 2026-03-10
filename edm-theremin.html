@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDM Theremin — Bharath Mohan</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-style.css">
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-logo">B.MOHAN</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="project-hero">
+    <a href="../index.html#projects" class="back-link">← Back to all projects</a>
+    <h1>EDM Theremin: A Multimodal Embedded Instrument for Real-Time Audio Synthesis</h1>
+    <div class="project-meta">
+        <div class="meta-item"><span>Institution:</span> UC Berkeley</div>
+        <div class="meta-item"><span>Timeline:</span> Feb 2026 – Present</div>
+        <div class="meta-item"><span>Status:</span> In Progress</div>
+    </div>
+    <p class="project-intro">
+        Developing a microcontroller-based electronic instrument inspired by the theremin 
+        for real-time audio synthesis and control. The system uses proximity sensing and 
+        multimodal inputs to drive low-latency audio generation, signal mixing, and 
+        real-time visualization on an ESP32 platform.
+    </p>
+
+    <div class="tags" style="margin-bottom: 2rem;">
+        <span class="tag">ESP32</span>
+        <span class="tag">Embedded C</span>
+        <span class="tag">LabVIEW</span>
+        <span class="tag">Signal Processing</span>
+        <span class="tag">Proximity Sensing</span>
+        <span class="tag">Real-Time Systems</span>
+    </div>
+
+    <div class="image-placeholder hero-img">[ Add hero image: photo of the hardware setup or signal flow diagram ]</div>
+    <div class="image-caption">Fig 1. EDM Theremin hardware setup</div>
+</section>
+
+<section class="project-content">
+
+    <div class="content-section">
+        <h2>Concept</h2>
+        <p>
+            The classic theremin is one of the earliest electronic instruments — controlled 
+            entirely without physical contact, using the player's hand proximity to antennas. 
+            This project reimagines that concept for modern electronic music, combining 
+            proximity sensing with additional control interfaces to enable real-time synthesis 
+            of EDM-style sounds.
+        </p>
+        <p>
+            Beyond the musical application, this project serves as a platform to explore 
+            embedded control, real-time signal processing, and interactive physical computing 
+            on resource-constrained hardware.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>System Design</h2>
+        <p>
+            <!-- Placeholder for detailed system description -->
+            The instrument is built around an ESP32 microcontroller, chosen for its dual-core 
+            architecture (enabling parallel audio processing and sensor reading), integrated 
+            DAC for audio output, and WiFi/Bluetooth for potential remote control.
+        </p>
+        <div class="image-placeholder inline-img">[ Add image: system block diagram — sensors → MCU → audio output ]</div>
+        <div class="image-caption">Fig 2. System architecture</div>
+        <ul>
+            <li>Embedded firmware for audio sampling and signal mixing</li>
+            <li>Multimodal input pipeline — proximity sensors and control interfaces</li>
+            <li>Low-latency interaction design for responsive audio generation</li>
+            <li>Real-time visualization of audio parameters via LabVIEW</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Technical Challenges</h2>
+        <p>
+            <!-- Placeholder — add detail as project progresses -->
+            The primary challenge is achieving low-latency audio generation on an embedded 
+            platform. Human perception of audio latency is extremely sensitive — anything 
+            above ~10ms feels sluggish for a musical instrument. This requires careful 
+            optimization of the signal processing pipeline and interrupt handling.
+        </p>
+        <div class="image-placeholder inline-img">[ Add image: latency measurement or audio waveform ]</div>
+        <div class="image-caption">Fig 3. Audio latency analysis</div>
+    </div>
+
+    <div class="content-section">
+        <h2>Progress & Next Steps</h2>
+        <p>
+            <!-- Placeholder — update as project develops -->
+            Currently implementing the core firmware and sensor integration. Next steps include 
+            audio synthesis algorithm development and user interaction testing.
+        </p>
+        <div class="image-row">
+            <div>
+                <div class="image-placeholder small-img">[ Add photo: breadboard prototype ]</div>
+                <div class="image-caption">Fig 4. Current prototype</div>
+            </div>
+            <div>
+                <div class="image-placeholder small-img">[ Add image: LabVIEW visualization ]</div>
+                <div class="image-caption">Fig 5. LabVIEW monitoring interface</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Why This Project Matters for Robotics</h2>
+        <p>
+            While this looks like a music project on the surface, the underlying skills 
+            transfer directly to robotics: real-time embedded control, low-latency sensor 
+            fusion, interrupt-driven firmware design, and human-in-the-loop interaction. 
+            These are the same problems that make robot control hard — just expressed 
+            through a different (and more fun) medium.
+        </p>
+    </div>
+
+</section>
+
+<div class="next-project">
+    <a href="multi-agent.html">
+        <div class="next-label">Next Project</div>
+        <div class="next-title">Multi-Agent Coordination & Consensus →</div>
+    </a>
+</div>
+
+<footer>
+    © 2026 Bharath Mohan · Built with care in Berkeley, CA
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

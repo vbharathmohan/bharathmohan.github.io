@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanoid Locomotion — Bharath Mohan</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-style.css">
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-logo">B.MOHAN</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="project-hero">
+    <a href="../index.html#projects" class="back-link">← Back to all projects</a>
+    <h1>Learning-Based Multi-Terrain Robot Locomotion</h1>
+    <div class="project-meta">
+        <div class="meta-item"><span>Institution:</span> UC Berkeley</div>
+        <div class="meta-item"><span>Timeline:</span> Sep 2025 – Present</div>
+        <div class="meta-item"><span>Status:</span> In Progress</div>
+    </div>
+    <p class="project-intro">
+        Training a Unitree G1 humanoid robot to walk across varied terrains using PPO-based 
+        reinforcement learning in MuJoCo Playground. Exploring terrain-adaptive locomotion 
+        policies and the foundations for sim-to-real transfer.
+    </p>
+
+    <div class="tags" style="margin-bottom: 2rem;">
+        <span class="tag">Reinforcement Learning</span>
+        <span class="tag">PPO</span>
+        <span class="tag">MuJoCo</span>
+        <span class="tag">Python</span>
+        <span class="tag">Unitree G1</span>
+    </div>
+
+    <div class="image-placeholder hero-img">[ Add hero image: MuJoCo simulation screenshot of G1 walking ]</div>
+    <div class="image-caption">Fig 1. Unitree G1 in MuJoCo Playground simulation</div>
+</section>
+
+<section class="project-content">
+
+    <div class="content-section">
+        <h2>Problem & Motivation</h2>
+        <p>
+            Humanoid robots need to traverse diverse terrain — flat ground, slopes, stairs, 
+            rough surfaces — without hand-tuned gaits for each surface. Reinforcement learning 
+            offers a path to policies that generalize across terrain types, but training stable 
+            bipedal locomotion is notoriously difficult due to the high dimensionality of 
+            humanoid dynamics and the narrow stability margins.
+        </p>
+        <p>
+            <!-- Add more detail as project progresses -->
+            This project is exploring how PPO-based training in simulation can produce 
+            robust walking policies for the Unitree G1 across multiple terrain conditions.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Approach</h2>
+        <p>
+            <!-- Placeholder for more detailed approach description -->
+            Using MuJoCo Playground as the simulation environment, the G1 humanoid model is 
+            trained with Proximal Policy Optimization (PPO) to develop walking gaits. The 
+            training curriculum exposes the policy to varied terrain conditions to encourage 
+            robust generalization.
+        </p>
+        <div class="image-placeholder inline-img">[ Add image: training setup diagram or terrain variations ]</div>
+        <div class="image-caption">Fig 2. Training environment and terrain variations</div>
+        <ul>
+            <li>PPO-based policy training with terrain randomization</li>
+            <li>Reward shaping for stable bipedal gait and forward progress</li>
+            <li>Domain randomization for robustness to terrain variation</li>
+            <!-- Add more bullet points as the project develops -->
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Results</h2>
+        <p>
+            <!-- Placeholder — update with actual results -->
+            Results will be updated as the project progresses. Initial training has focused 
+            on flat-ground locomotion before introducing terrain complexity.
+        </p>
+        <div class="image-row">
+            <div>
+                <div class="image-placeholder small-img">[ Add plot: training reward curves ]</div>
+                <div class="image-caption">Fig 3. Training progress</div>
+            </div>
+            <div>
+                <div class="image-placeholder small-img">[ Add image: different terrain walking ]</div>
+                <div class="image-caption">Fig 4. Multi-terrain performance</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>What I'm Learning</h2>
+        <p>
+            <!-- Placeholder — update as project progresses -->
+            This project is deepening my understanding of reinforcement learning for 
+            physical systems, reward engineering for locomotion, and the practical challenges 
+            of training high-dimensional control policies. It complements my controls 
+            background by approaching the same problem (making robots move) from a 
+            learning-based rather than model-based perspective.
+        </p>
+    </div>
+
+</section>
+
+<div class="next-project">
+    <a href="edm-theremin.html">
+        <div class="next-label">Next Project</div>
+        <div class="next-title">EDM Theremin — Embedded Real-Time Audio Synthesis →</div>
+    </a>
+</div>
+
+<footer>
+    © 2026 Bharath Mohan · Built with care in Berkeley, CA
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

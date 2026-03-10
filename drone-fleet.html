@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Fleet Coordination — Bharath Mohan</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-style.css">
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-logo">B.MOHAN</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="project-hero">
+    <a href="../index.html#projects" class="back-link">← Back to all projects</a>
+    <h1>Energy-Aware Learning for Optimized Drone Fleet Coordination in Urban Delivery</h1>
+    <div class="project-meta">
+        <div class="meta-item"><span>Lab:</span> HiPeRLab, UC Berkeley</div>
+        <div class="meta-item"><span>Timeline:</span> 2025–2026</div>
+        <div class="meta-item"><span>Status:</span> Completed</div>
+    </div>
+    <p class="project-intro">
+        Developed a data-driven energy prediction pipeline for quadrotor flight using real-world 
+        telemetry data from the HiPeR Lab at UC Berkeley. The goal was to enable energy-aware 
+        fleet coordination for urban drone delivery by accurately predicting energy consumption 
+        under varied flight conditions.
+    </p>
+
+    <div class="tags" style="margin-bottom: 2rem;">
+        <span class="tag">Python</span>
+        <span class="tag">PyTorch</span>
+        <span class="tag">Transformers</span>
+        <span class="tag">LSTM</span>
+        <span class="tag">Bi-LSTM</span>
+        <span class="tag">RNN</span>
+        <span class="tag">Sim-to-Real</span>
+    </div>
+
+    <div class="key-results">
+        <h3>Key Results</h3>
+        <div class="results-grid">
+            <div class="result-item">
+                <div class="number">98%</div>
+                <div class="label">Prediction accuracy (R²)</div>
+            </div>
+            <div class="result-item">
+                <div class="number">4</div>
+                <div class="label">Architectures benchmarked</div>
+            </div>
+            <div class="result-item">
+                <div class="number">Sim→Real</div>
+                <div class="label">Validation framework built</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-placeholder hero-img">[ Add hero image: system overview diagram or drone testbed photo ]</div>
+    <div class="image-caption">Fig 1. System overview / testbed photo</div>
+</section>
+
+<section class="project-content">
+
+    <div class="content-section">
+        <h2>Problem & Motivation</h2>
+        <p>
+            Urban drone delivery requires precise energy management — a drone that runs out of 
+            battery mid-flight is not just an inconvenience, it's a safety hazard. Existing 
+            energy models rely on simplified physics that don't capture the nonlinear dynamics 
+            of real quadrotor flight (wind disturbances, payload variation, battery degradation).
+        </p>
+        <p>
+            This project asked: can we learn energy consumption models directly from flight data 
+            that are accurate enough to enable fleet-level coordination and routing decisions?
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Approach</h2>
+        <p>
+            Using real-world telemetry data collected from the HiPeR Lab's quadrotor testbed, 
+            I built and compared four deep learning architectures for energy prediction:
+        </p>
+        <ul>
+            <li>Vanilla RNN — baseline sequential model</li>
+            <li>LSTM — captures long-term dependencies in flight trajectories</li>
+            <li>Bi-LSTM — bidirectional context for improved temporal modeling</li>
+            <li>Transformer — attention-based architecture for global sequence understanding</li>
+        </ul>
+
+        <div class="image-placeholder inline-img">[ Add image: model architecture comparison diagram ]</div>
+        <div class="image-caption">Fig 2. Architecture comparison — RNN vs LSTM vs Bi-LSTM vs Transformer</div>
+
+        <p>
+            Each model was trained on flight telemetry features (velocity, acceleration, 
+            orientation, motor commands) to predict cumulative energy consumption. I designed 
+            a consistent evaluation framework to compare convergence, accuracy, and 
+            generalization across flight conditions.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Results</h2>
+        <div class="image-row">
+            <div>
+                <div class="image-placeholder small-img">[ Add plot: training loss curves ]</div>
+                <div class="image-caption">Fig 3. Training convergence</div>
+            </div>
+            <div>
+                <div class="image-placeholder small-img">[ Add plot: predicted vs actual energy ]</div>
+                <div class="image-caption">Fig 4. Predicted vs actual energy</div>
+            </div>
+        </div>
+        <p>
+            The best-performing model achieved 98% prediction accuracy (R²), demonstrating 
+            that data-driven approaches can reliably model the complex energy dynamics of 
+            quadrotor flight. The Transformer architecture showed particular strength in 
+            handling variable-length flight sequences.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Sim-to-Real Validation</h2>
+        <p>
+            A key contribution was the development of a sim-to-real validation framework. 
+            Models trained on simulation data were evaluated against real-world flight 
+            telemetry to assess deployment feasibility and identify the domain gap.
+        </p>
+        <div class="image-placeholder inline-img">[ Add image: sim-to-real comparison plot or framework diagram ]</div>
+        <div class="image-caption">Fig 5. Sim-to-real transfer analysis</div>
+    </div>
+
+    <div class="content-section">
+        <h2>What I Learned</h2>
+        <p>
+            This project deepened my understanding of sequence modeling for physical systems, 
+            the challenges of sim-to-real transfer, and the practical considerations of 
+            deploying ML models for safety-critical robotics applications. Working with 
+            real flight data — with all its noise and edge cases — was fundamentally 
+            different from clean simulation datasets.
+        </p>
+    </div>
+
+</section>
+
+<div class="next-project">
+    <a href="asv-control.html">
+        <div class="next-label">Next Project</div>
+        <div class="next-title">Autonomous Surface Vessel — Waypoint Tracking & Control →</div>
+    </a>
+</div>
+
+<footer>
+    © 2026 Bharath Mohan · Built with care in Berkeley, CA
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

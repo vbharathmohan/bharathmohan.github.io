@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydrofoil System — Bharath Mohan</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-style.css">
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-logo">B.MOHAN</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="project-hero">
+    <a href="../index.html#projects" class="back-link">← Back to all projects</a>
+    <h1>Design, Optimization and Control of a Hydrofoil System for High-Performance Marine Vessels</h1>
+    <div class="project-meta">
+        <div class="meta-item"><span>Institution:</span> IIT Madras</div>
+        <div class="meta-item"><span>Timeline:</span> 2024–2025</div>
+        <div class="meta-item"><span>Published:</span> ASME OMAE 2025, Vancouver</div>
+        <div class="meta-item"><span>Role:</span> R&D Lead</div>
+    </div>
+    <p class="project-intro">
+        Led a team through the complete lifecycle of a hydrofoil vessel — from foil geometry 
+        optimization and 3-DoF dynamics modeling through LQR-based active ride control to 
+        physical manufacturing and testing. The work was published and presented at ASME OMAE 2025.
+    </p>
+
+    <div class="tags" style="margin-bottom: 2rem;">
+        <span class="tag">MATLAB</span>
+        <span class="tag">LQR Control</span>
+        <span class="tag">Dynamics Modeling</span>
+        <span class="tag">CFD</span>
+        <span class="tag">Foil Optimization</span>
+        <span class="tag">Hardware</span>
+        <span class="tag">Team Lead</span>
+    </div>
+
+    <div class="key-results">
+        <h3>Key Results</h3>
+        <div class="results-grid">
+            <div class="result-item">
+                <div class="number">89%</div>
+                <div class="label">Drag reduction (7.47 kN → 812 N)</div>
+            </div>
+            <div class="result-item">
+                <div class="number">19.4 kn</div>
+                <div class="label">Stable foilborne speed</div>
+            </div>
+            <div class="result-item">
+                <div class="number">~0°</div>
+                <div class="label">Pitch angle maintained</div>
+            </div>
+            <div class="result-item">
+                <div class="number">0.5 m</div>
+                <div class="label">Controlled ride height</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-placeholder hero-img">[ Add hero image: hydrofoil vessel photo or CAD render ]</div>
+    <div class="image-caption">Fig 1. Hydrofoil vessel — final design</div>
+</section>
+
+<section class="project-content">
+
+    <div class="content-section">
+        <h2>Problem & Motivation</h2>
+        <p>
+            Conventional displacement hulls face a fundamental speed limitation: as velocity 
+            increases, wave-making resistance grows dramatically. Hydrofoils solve this by 
+            lifting the hull clear of the water at speed, but this introduces a new challenge — 
+            maintaining stable flight above the surface requires active control of the foil 
+            angle of attack in real time.
+        </p>
+        <p>
+            This project addressed both the design optimization (choosing the right foil 
+            geometry for maximum lift-to-drag ratio) and the control problem (keeping the 
+            vessel stable in foilborne mode).
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Foil Design & Optimization</h2>
+        <p>
+            The foil geometry was optimized for the target operating speed and vessel displacement 
+            using MATLAB and low-order flow simulation. Key design parameters included foil span, 
+            chord, section profile, and strut configuration.
+        </p>
+        <div class="image-row">
+            <div>
+                <div class="image-placeholder small-img">[ Add image: foil profile / geometry ]</div>
+                <div class="image-caption">Fig 2. Optimized foil section</div>
+            </div>
+            <div>
+                <div class="image-placeholder small-img">[ Add image: CFD pressure distribution ]</div>
+                <div class="image-caption">Fig 3. CFD analysis results</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Dynamics Modeling</h2>
+        <p>
+            A 3-DoF maneuvering dynamics model was developed to capture surge, heave, and pitch 
+            behavior during the transition from hullborne to foilborne operation. The model 
+            accounts for hydrodynamic forces on both the hull and the foils, including the 
+            nonlinear lift and drag characteristics at varying angles of attack and immersion depths.
+        </p>
+        <div class="image-placeholder inline-img">[ Add image: dynamics model schematic or force diagram ]</div>
+        <div class="image-caption">Fig 4. 3-DoF dynamics model — force balance during foilborne operation</div>
+    </div>
+
+    <div class="content-section">
+        <h2>Active Ride Control with LQR</h2>
+        <p>
+            An LQR (Linear Quadratic Regulator) controller was designed for active ride control, 
+            maintaining near-zero pitch angle and a target ride height of 0.5 meters. The controller 
+            modulates the foil angle of attack in real time based on heave and pitch state feedback.
+        </p>
+        <p>
+            The LQR was tuned to balance ride comfort (minimizing pitch oscillations) against 
+            actuator effort (preventing excessive foil deflections that could cause ventilation 
+            or stall).
+        </p>
+        <div class="image-row">
+            <div>
+                <div class="image-placeholder small-img">[ Add plot: pitch response with control ]</div>
+                <div class="image-caption">Fig 5. Pitch angle response</div>
+            </div>
+            <div>
+                <div class="image-placeholder small-img">[ Add plot: ride height over time ]</div>
+                <div class="image-caption">Fig 6. Ride height tracking</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Performance Results</h2>
+        <p>
+            In foilborne operation at 19.4 knots, resistance dropped from 7.47 kN (hullborne) 
+            to just 812 N — an 89% reduction. The vessel maintained approximately 0° pitch angle 
+            and stable 0.5 m ride height under the LQR controller, demonstrating the viability 
+            of the combined design-and-control approach.
+        </p>
+        <div class="image-placeholder inline-img">[ Add plot: resistance comparison hullborne vs foilborne ]</div>
+        <div class="image-caption">Fig 7. Resistance comparison — hullborne vs foilborne operation</div>
+    </div>
+
+    <div class="content-section">
+        <h2>Publication</h2>
+        <p>
+            This work was presented and published at the <strong>ASME International Conference on 
+            Ocean, Offshore and Arctic Engineering (OMAE) 2025</strong> in Vancouver, Canada. The paper 
+            details the integrated framework for hydrofoil vessel design spanning geometry 
+            optimization, dynamics modeling, and LQR-based active ride control.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>Connection to SAVTOA Internship</h2>
+        <p>
+            This academic work built upon foundations laid during my R&D internship at SAVTOA 
+            Software Technologies, where I consulted on the design of an autonomous hydrofoil 
+            catamaran. At SAVTOA, I developed predictive AoA control and optimized foil geometry 
+            that increased vessel speed by 87% and reduced drag by 35%. The preliminary design 
+            was adopted for the ongoing construction of one of India's first autonomous hydrofoil 
+            vessels.
+        </p>
+    </div>
+
+</section>
+
+<div class="next-project">
+    <a href="humanoid-locomotion.html">
+        <div class="next-label">Next Project</div>
+        <div class="next-title">Multi-Terrain Humanoid Locomotion →</div>
+    </a>
+</div>
+
+<footer>
+    © 2026 Bharath Mohan · Built with care in Berkeley, CA
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

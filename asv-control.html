@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASV Waypoint Tracking — Bharath Mohan</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="project-style.css">
+</head>
+<body>
+
+<nav>
+    <a href="../index.html" class="nav-logo">B.MOHAN</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="../index.html#projects">Projects</a></li>
+        <li><a href="../index.html#experience">Experience</a></li>
+        <li><a href="../index.html#education">Education</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="project-hero">
+    <a href="../index.html#projects" class="back-link">← Back to all projects</a>
+    <h1>Waypoint Tracking and Control of an Autonomous Surface Vessel</h1>
+    <div class="project-meta">
+        <div class="meta-item"><span>Institution:</span> IIT Madras</div>
+        <div class="meta-item"><span>Timeline:</span> 2024–2025</div>
+        <div class="meta-item"><span>Status:</span> Completed</div>
+    </div>
+    <p class="project-intro">
+        Designed and deployed a full autonomy stack for a surface vessel — from 6-DoF maneuvering 
+        dynamics simulation through state estimation and control, all the way to hardware validation 
+        on a physical ASV testbed using ROS.
+    </p>
+
+    <div class="tags" style="margin-bottom: 2rem;">
+        <span class="tag">ROS</span>
+        <span class="tag">Python</span>
+        <span class="tag">Extended Kalman Filter</span>
+        <span class="tag">PID Control</span>
+        <span class="tag">Line-of-Sight Guidance</span>
+        <span class="tag">6-DoF Dynamics</span>
+    </div>
+
+    <div class="key-results">
+        <h3>Key Results</h3>
+        <div class="results-grid">
+            <div class="result-item">
+                <div class="number">6-DoF</div>
+                <div class="label">Maneuvering dynamics model</div>
+            </div>
+            <div class="result-item">
+                <div class="number">EKF</div>
+                <div class="label">State estimation pipeline</div>
+            </div>
+            <div class="result-item">
+                <div class="number">Hardware</div>
+                <div class="label">Validated on physical ASV</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="image-placeholder hero-img">[ Add hero image: photo of the ASV on water or ROS system architecture ]</div>
+    <div class="image-caption">Fig 1. ASV testbed / system architecture overview</div>
+</section>
+
+<section class="project-content">
+
+    <div class="content-section">
+        <h2>Problem & Motivation</h2>
+        <p>
+            Autonomous surface vessels need to reliably follow planned routes in the presence of 
+            ocean currents, wind disturbances, and sensor noise. This project tackled the full 
+            pipeline: modeling the vessel's dynamics, estimating its state from noisy sensors, 
+            and controlling it to track a sequence of waypoints autonomously.
+        </p>
+    </div>
+
+    <div class="content-section">
+        <h2>System Architecture</h2>
+        <div class="image-placeholder inline-img">[ Add image: block diagram showing Dynamics → EKF → Controller → Guidance ]</div>
+        <div class="image-caption">Fig 2. Autonomy stack block diagram</div>
+
+        <p>
+            The autonomy stack comprised four tightly integrated layers:
+        </p>
+        <ul>
+            <li><strong>Dynamics Model:</strong> 6-DoF maneuvering equations capturing surge, sway, heave, roll, pitch, and yaw</li>
+            <li><strong>State Estimation:</strong> Extended Kalman Filter fusing GPS, IMU, and compass data for robust state estimates</li>
+            <li><strong>Heading Control:</strong> PID controller with tuned gains for responsive heading tracking</li>
+            <li><strong>Guidance:</strong> Integral Line-of-Sight (ILoS) algorithm for waypoint-to-waypoint navigation with cross-track error correction</li>
+        </ul>
+    </div>
+
+    <div class="content-section">
+        <h2>Dynamics Modeling</h2>
+        <p>
+            The 6-DoF vessel model captures the coupled hydrodynamic forces acting on the hull. 
+            This includes added mass effects, nonlinear damping, and restoring forces. The model 
+            was parameterized for the specific ASV hull geometry and validated against known 
+            maneuvering test data.
+        </p>
+        <div class="image-placeholder inline-img">[ Add image: vessel coordinate frame diagram or simulation trajectory ]</div>
+        <div class="image-caption">Fig 3. Vessel coordinate frames and force diagram</div>
+    </div>
+
+    <div class="content-section">
+        <h2>State Estimation & Control</h2>
+        <p>
+            The Extended Kalman Filter was designed to handle the nonlinear dynamics while 
+            fusing multiple sensor modalities. GPS provided position updates at lower frequency, 
+            while IMU data gave high-rate orientation and acceleration measurements.
+        </p>
+        <p>
+            The PID heading controller was tuned for the specific vessel dynamics, balancing 
+            responsiveness against overshoot. The Integral LoS guidance law handles waypoint 
+            switching and compensates for steady-state cross-track errors caused by currents.
+        </p>
+        <div class="image-row">
+            <div>
+                <div class="image-placeholder small-img">[ Add plot: EKF state estimates vs ground truth ]</div>
+                <div class="image-caption">Fig 4. EKF estimation performance</div>
+            </div>
+            <div>
+                <div class="image-placeholder small-img">[ Add plot: waypoint tracking trajectory ]</div>
+                <div class="image-caption">Fig 5. Waypoint tracking results</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-section">
+        <h2>Hardware Deployment</h2>
+        <p>
+            The entire stack was deployed on the physical ASV using ROS. Nodes were structured 
+            for modularity: separate packages for sensing, estimation, control, and guidance, 
+            communicating via ROS topics. The system was validated in real water conditions 
+            with GPS-based ground truth.
+        </p>
+        <div class="image-placeholder inline-img">[ Add image: photo of hardware deployment or ROS node graph ]</div>
+        <div class="image-caption">Fig 6. ROS deployment on the ASV testbed</div>
+    </div>
+
+    <div class="content-section">
+        <h2>What I Learned</h2>
+        <p>
+            This was my first end-to-end autonomous system: from mathematical modeling through 
+            real-world deployment. The biggest lessons were about the gap between simulation 
+            and hardware — sensor noise, communication latency, and environmental disturbances 
+            that no simulation perfectly captures. Debugging a control system on water, where 
+            you can't just pause and inspect, taught me a lot about designing for robustness.
+        </p>
+    </div>
+
+</section>
+
+<div class="next-project">
+    <a href="hydrofoil.html">
+        <div class="next-label">Next Project</div>
+        <div class="next-title">Hydrofoil System — Design, Optimization & Active Control →</div>
+    </a>
+</div>
+
+<footer>
+    © 2026 Bharath Mohan · Built with care in Berkeley, CA
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

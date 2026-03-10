@@ -52,7 +52,7 @@
         <h3>Key Results</h3>
         <div class="results-grid">
             <div class="result-item">
-                <div class="number">98%</div>
+                <div class="number">95%</div>
                 <div class="label">Prediction accuracy (R²)</div>
             </div>
             <div class="result-item">
@@ -66,8 +66,8 @@
         </div>
     </div>
 
-    <img src="../images/DroneSystemArchitecture.png" alt="System Overview Diagram" class="hero-img"></div>
-    <div class="image-caption">Fig 1. System overview</div>
+    <img src="../images/drone-system-architecture.svg" alt="System architecture for energy-aware drone fleet coordination" class="hero-img">
+<div class="image-caption">Fig 1. End-to-end system architecture — from flight simulation through observation construction to energy prediction</div>
 </section>
 
 <section class="project-content">
@@ -99,8 +99,8 @@
             <li>Transformer — attention-based architecture for global sequence understanding</li>
         </ul>
 
-        <div class="image-placeholder inline-img">[ Add image: model architecture comparison diagram ]</div>
-        <div class="image-caption">Fig 2. Architecture comparison — RNN vs LSTM vs Bi-LSTM vs Transformer</div>
+        <img src="../images/drone-training-pipeline.svg" alt="Domain randomization and training pipeline" class="inline-img">
+        <div class="image-caption">Fig 2. Domain randomization strategy and model training pipeline with architecture benchmarking</div>
 
         <p>
             Each model was trained on flight telemetry features (velocity, acceleration, 
@@ -113,15 +113,15 @@
     <div class="content-section">
         <h2>Results</h2>
         <div class="image-row">
-            <div>
-                <div class="image-placeholder small-img">[ Add plot: training loss curves ]</div>
-                <div class="image-caption">Fig 3. Training convergence</div>
-            </div>
-            <div>
-                <div class="image-placeholder small-img">[ Add plot: predicted vs actual energy ]</div>
-                <div class="image-caption">Fig 4. Predicted vs actual energy</div>
-            </div>
-        </div>
+    <div>
+        <img src="../images/training-loss-comparison.png" alt="Training convergence comparison across GRU, MNN, and LSTM" class="small-img">
+        <div class="image-caption">Fig 3. Training convergence — GRU, MNN, and LSTM all converge to ~0.05 loss</div>
+    </div>
+    <div>
+        <img src="../images/lstm-prediction-vs-actual.png" alt="LSTM predicted vs ground truth normalized power" class="small-img">
+        <div class="image-caption">Fig 4. LSTM prediction vs ground truth — R² = 0.95</div>
+    </div>
+</div>
         <p>
             The best-performing model achieved 98% prediction accuracy (R²), demonstrating 
             that data-driven approaches can reliably model the complex energy dynamics of 

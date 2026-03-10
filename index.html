@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharath Mohan — Robotics & Autonomous Systems Engineer</title>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,700;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== INDEX-SPECIFIC STYLES ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-eyebrow {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--accent);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.2s forwards;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 6vw, 4.8rem);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.35s forwards;
+        }
+
+        .hero h1 .italic { font-style: italic; color: var(--accent); }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 580px;
+            line-height: 1.75;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.5s forwards;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.65s forwards;
+        }
+
+        .hero-coord {
+            position: absolute;
+            right: 2rem; bottom: 4rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            text-align: right;
+            line-height: 1.9;
+            opacity: 0;
+            animation: fadeUp 0.8s ease 0.8s forwards;
+        }
+
+        section { max-width: 1100px; margin: 0 auto; padding: 6rem 2rem; }
+
+        .section-desc {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 3rem;
+            font-size: 0.95rem;
+        }
+
+        /* PROJECT CARDS */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(480px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .project-card:hover { background: var(--bg-card-hover); border-color: var(--border-accent); transform: translateY(-3px); }
+        .project-card:hover::before { opacity: 1; }
+
+        .project-card .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.75rem;
+        }
+
+        .project-status {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.65rem;
+            letter-spacing: 0.08em;
+            padding: 0.25rem 0.6rem;
+            border-radius: 20px;
+            border: 1px solid var(--border-accent);
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .project-status.published { border-color: var(--accent-dim); color: var(--accent); }
+
+        .project-card h3 { font-size: 1.15rem; font-weight: 600; line-height: 1.35; margin-bottom: 0.5rem; padding-right: 1rem; }
+
+        .project-context { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 1rem; }
+
+        .project-card p { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 1.25rem; }
+
+        .project-card .results {
+            font-size: 0.85rem;
+            color: var(--warm);
+            font-weight: 500;
+            margin-bottom: 1.25rem;
+            padding-left: 0.75rem;
+            border-left: 2px solid var(--warm);
+        }
+
+        .card-cta {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--accent);
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            opacity: 0.6;
+            transition: opacity 0.25s;
+        }
+
+        .project-card:hover .card-cta { opacity: 1; }
+
+        /* EXPERIENCE TIMELINE */
+        .timeline { position: relative; padding-left: 2rem; }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0.5rem; bottom: 0.5rem;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--accent), var(--border), transparent);
+        }
+
+        .timeline-item { position: relative; padding-bottom: 2.5rem; }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem; top: 0.55rem;
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent-dim);
+        }
+
+        .timeline-item h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .timeline-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.6rem; }
+        .timeline-item p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.7; }
+
+        /* EDUCATION */
+        .edu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 1.5rem; }
+
+        .edu-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .edu-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.2rem; }
+        .edu-card .degree { font-size: 0.88rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .edu-card .details { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
+        .edu-card .highlight { font-size: 0.82rem; color: var(--warm); margin-top: 0.5rem; }
+        .coursework-list { margin-top: 1rem; display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+        /* SKILLS */
+        .skills-columns { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2rem; }
+
+        .skill-group h3 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .skill-group ul { list-style: none; }
+        .skill-group li { font-size: 0.88rem; color: var(--text-secondary); padding: 0.35rem 0; border-bottom: 1px solid var(--border); }
+        .skill-group li:last-child { border-bottom: none; }
+
+        /* PUBLICATIONS */
+        .pub-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.75rem 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .pub-item h3 { font-size: 1rem; font-weight: 600; margin-bottom: 0.3rem; }
+        .pub-item .venue { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--accent); margin-bottom: 0.5rem; }
+        .pub-item p { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* CONTACT */
+        .contact-section { text-align: center; padding: 6rem 2rem 3rem; }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-links a {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            transition: all 0.25s ease;
+        }
+
+        .contact-links a:hover { color: var(--accent); border-color: var(--accent-dim); background: var(--accent-glow); }
+
+        @media (max-width: 768px) {
+            .hero { padding: 7rem 1.25rem 3rem; }
+            .hero-coord { display: none; }
+            section { padding: 4rem 1.25rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .edu-grid { grid-template-columns: 1fr; }
+            .skills-columns { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 480px) {
+            .skills-columns { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <a href="index.html" class="nav-logo">B.MOHAN</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+        <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+</nav>
+
+<section class="hero">
+    <div class="hero-eyebrow">Robotics · Controls · Autonomous Systems</div>
+    <h1>Bharath <span class="italic">Mohan</span></h1>
+    <p class="hero-sub">
+        MEng student at UC Berkeley building intelligent systems that move through the real world — 
+        from autonomous marine vessels to drone fleets to walking humanoids. 
+        I bring deep experience in control systems, embedded hardware, and applied machine learning to make robots that actually work.
+    </p>
+    <div class="hero-links">
+        <a href="#projects" class="btn-primary">View Projects ↓</a>
+        <a href="https://www.linkedin.com/in/vbharathmohan/" target="_blank" class="btn-outline">LinkedIn</a>
+        <a href="mailto:bharathvinodmohan@gmail.com" class="btn-outline">Email</a>
+    </div>
+    <div class="hero-coord">
+        37.8719° N, 122.2585° W<br>
+        Berkeley, California<br>
+        MEng '26 — UC Berkeley
+    </div>
+</section>
+
+<section id="projects">
+    <div class="reveal">
+        <div class="section-label">// Projects</div>
+        <h2 class="section-title">Selected Work</h2>
+        <p class="section-desc">Systems I've designed, built, and validated — from simulation to hardware.</p>
+    </div>
+
+    <div class="projects-grid">
+
+        <a href="projects/drone-fleet.html" class="project-card reveal">
+            <div class="card-header">
+                <div>
+                    <h3>Energy-Aware Drone Fleet Coordination</h3>
+                    <div class="project-context">HiPeRLab, UC Berkeley · 2025–26</div>
+                </div>
+                <span class="project-status">Completed</span>
+            </div>
+            <p>
+                Built a data-driven energy prediction pipeline for quadrotor fleets using real-world 
+                telemetry. Compared RNN, LSTM, Bi-LSTM, and Transformer architectures to model 
+                nonlinear flight-energy dynamics.
+            </p>
+            <div class="results">98% prediction accuracy (R²) · Sim-to-real validation framework</div>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">PyTorch</span>
+                <span class="tag">Transformers</span>
+                <span class="tag">LSTM</span>
+                <span class="tag">Sim-to-Real</span>
+            </div>
+            <div class="card-cta">View project details →</div>
+        </a>
+
+        <a href="projects/asv-control.html" class="project-card reveal">
+            <div class="card-header">
+                <div>
+                    <h3>Autonomous Surface Vessel — Waypoint Tracking & Control</h3>
+                    <div class="project-context">IIT Madras · 2024–25</div>
+                </div>
+                <span class="project-status">Completed</span>
+            </div>
+            <p>
+                Developed a full autonomy stack for a surface vessel: 6-DoF maneuvering dynamics, 
+                Extended Kalman Filter for state estimation, PID heading control, and waypoint 
+                tracking via Integral Line-of-Sight.
+            </p>
+            <div class="results">Hardware-validated on physical ASV · Full ROS integration</div>
+            <div class="tags">
+                <span class="tag">ROS</span>
+                <span class="tag">Python</span>
+                <span class="tag">EKF</span>
+                <span class="tag">PID Control</span>
+                <span class="tag">LoS Guidance</span>
+            </div>
+            <div class="card-cta">View project details →</div>
+        </a>
+
+        <a href="projects/hydrofoil.html" class="project-card reveal">
+            <div class="card-header">
+                <div>
+                    <h3>Hydrofoil System — Design, Optimization & Active Control</h3>
+                    <div class="project-context">IIT Madras + ASME OMAE 2025 · Published</div>
+                </div>
+                <span class="project-status published">Published</span>
+            </div>
+            <p>
+                Led design and control of a hydrofoil vessel from concept to hardware. Built a 3-DoF 
+                maneuvering model, implemented LQR for active ride control, and achieved stable 
+                foilborne performance at 19.4 knots.
+            </p>
+            <div class="results">Drag reduced from 7.47 kN → 812 N · Stable at 19.4 knots · 0° pitch, 0.5 m ride height</div>
+            <div class="tags">
+                <span class="tag">MATLAB</span>
+                <span class="tag">LQR</span>
+                <span class="tag">Dynamics Modeling</span>
+                <span class="tag">CFD</span>
+                <span class="tag">Hardware</span>
+            </div>
+            <div class="card-cta">View project details →</div>
+        </a>
+
+        <a href="projects/humanoid-locomotion.html" class="project-card reveal">
+            <div class="card-header">
+                <div>
+                    <h3>Multi-Terrain Humanoid Locomotion</h3>
+                    <div class="project-context">UC Berkeley · 2025–Present</div>
+                </div>
+                <span class="project-status">In Progress</span>
+            </div>
+            <p>
+                Training a Unitree G1 humanoid to walk across varied terrains using PPO-based 
+                reinforcement learning in MuJoCo Playground. Exploring sim-to-real transfer and 
+                terrain-adaptive locomotion policies.
+            </p>
+            <div class="tags">
+                <span class="tag">Reinforcement Learning</span>
+                <span class="tag">PPO</span>
+                <span class="tag">MuJoCo</span>
+                <span class="tag">Python</span>
+            </div>
+            <div class="card-cta">View project details →</div>
+        </a>
+
+        <a href="projects/edm-theremin.html" class="project-card reveal">
+            <div class="card-header">
+                <div>
+                    <h3>EDM Theremin — Embedded Real-Time Audio Synthesis</h3>
+                    <div class="project-context">UC Berkeley · 2026</div>
+                </div>
+                <span class="project-status">In Progress</span>
+            </div>
+            <p>
+                Building a microcontroller-based instrument inspired by the theremin. Implementing 
+                embedded firmware for real-time audio sampling, signal mixing, and visualization 
+                driven by proximity sensing on ESP32.
+            </p>
+            <div class="tags">
+                <span class="tag">ESP32</span>
+                <span class="tag">Embedded C</span>
+                <span class="tag">LabVIEW</span>
+                <span class="tag">Signal Processing</span>
+                <span class="tag">Hardware</span>
+            </div>
+            <div class="card-cta">View project details →</div>
+        </a>
+
+        <a href="projects/multi-agent.html" class="project-card reveal" style="border-style: dashed;">
+            <div class="card-header">
+                <div>
+                    <h3>Multi-Agent Coordination & Consensus</h3>
+                    <div class="project-context">UC Berkeley · Spring 2026</div>
+                </div>
+                <span class="project-status">Upcoming</span>
+            </div>
+            <p>
+                Upcoming project exploring multi-agent control and consensus protocols, 
+                likely incorporating reinforcement learning for decentralized coordination. 
+                Details coming soon.
+            </p>
+            <div class="tags">
+                <span class="tag">Multi-Agent Systems</span>
+                <span class="tag">RL</span>
+                <span class="tag">Consensus</span>
+            </div>
+            <div class="card-cta">View project details →</div>
+        </a>
+
+    </div>
+</section>
+
+<section id="experience">
+    <div class="reveal">
+        <div class="section-label">// Experience</div>
+        <h2 class="section-title">Where I've Built Things</h2>
+    </div>
+
+    <div class="timeline reveal">
+        <div class="timeline-item">
+            <h3>Hydrofoil R&D Lead</h3>
+            <div class="timeline-meta">IIT Madras, Dept. of Ocean Engineering · Jul 2024 – May 2025</div>
+            <p>
+                Led a team through the full lifecycle of a hydrofoil vessel — design, controls, 
+                and manufacturing. Owned milestones, resources, and delivery. Acted as primary 
+                stakeholder liaison, presenting technical outcomes and guiding team direction.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>New-Product R&D Intern</h3>
+            <div class="timeline-meta">SAVTOA Software Technologies, Trivandrum · May – Jul 2024</div>
+            <p>
+                Engineered a hydrofoil system that boosted vessel speed by 87% and cut drag by 35%. 
+                Developed predictive angle-of-attack control and optimized foil geometry. 
+                Preliminary design adopted for one of India's first autonomous hydrofoil vessels.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Head of Product Design</h3>
+            <div class="timeline-meta">Centre for Innovation, IIT Madras · Jun 2022 – May 2024</div>
+            <p>
+                Led a 40+ member organization across 4 concurrent product initiatives. 
+                Directed an agri-tech product that secured 2 design patents and won 
+                2 national competitions. Served as product strategist for 3 software projects.
+            </p>
+        </div>
+
+        <div class="timeline-item">
+            <h3>Shipbuilding Engineering Intern</h3>
+            <div class="timeline-meta">Cochin Shipyard Ltd., Ernakulam · Dec 2023 – Jan 2024</div>
+            <p>
+                Rotated across Ship Design and Production. Analyzed block fabrication 
+                workflows including CNC cutting, welding, and structural assembly. 
+                Assisted with structural alignment validation and QA inspections.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="education">
+    <div class="reveal">
+        <div class="section-label">// Education</div>
+        <h2 class="section-title">Academic Foundation</h2>
+    </div>
+
+    <div class="edu-grid reveal">
+        <div class="edu-card">
+            <h3>University of California, Berkeley</h3>
+            <div class="degree">MEng in Mechanical Engineering — Control of Robotic & Autonomous Systems</div>
+            <div class="details">Expected May 2026</div>
+            <div class="coursework-list">
+                <span class="tag">Advanced Control Systems</span>
+                <span class="tag">Robotic Locomotion</span>
+                <span class="tag">Multi-Agent Systems</span>
+                <span class="tag">Microprocessor-Based Systems</span>
+                <span class="tag">Statistics & Data Science</span>
+            </div>
+        </div>
+
+        <div class="edu-card">
+            <h3>Indian Institute of Technology Madras</h3>
+            <div class="degree">B.Tech with Honours — Naval Architecture & Ocean Engineering</div>
+            <div class="details">GPA: 9.16/10 · Department Rank: 3/70+</div>
+            <div class="highlight">
+                Class NK-100 Award (best project) · Vedam Design Award (best all-around student) · Highest CGPA Prize
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills">
+    <div class="reveal">
+        <div class="section-label">// Skills</div>
+        <h2 class="section-title">Technical Toolkit</h2>
+    </div>
+
+    <div class="skills-columns reveal">
+        <div class="skill-group">
+            <h3>Languages</h3>
+            <ul>
+                <li>Python</li>
+                <li>C++ / C (Embedded)</li>
+                <li>MATLAB</li>
+            </ul>
+        </div>
+        <div class="skill-group">
+            <h3>Robotics & Controls</h3>
+            <ul>
+                <li>ROS / ROS2</li>
+                <li>MuJoCo</li>
+                <li>Control Theory (PID, LQR, EKF)</li>
+                <li>Motion Planning</li>
+            </ul>
+        </div>
+        <div class="skill-group">
+            <h3>ML & Data</h3>
+            <ul>
+                <li>PyTorch</li>
+                <li>Reinforcement Learning (PPO)</li>
+                <li>LSTM / Transformers</li>
+                <li>Sim-to-Real Transfer</li>
+            </ul>
+        </div>
+        <div class="skill-group">
+            <h3>Hardware & Tools</h3>
+            <ul>
+                <li>ESP32 / Microcontrollers</li>
+                <li>LabVIEW</li>
+                <li>SolidWorks / CAD</li>
+                <li>Git / Linux</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section id="publications">
+    <div class="reveal">
+        <div class="section-label">// Publications</div>
+        <h2 class="section-title">Research</h2>
+    </div>
+
+    <div class="reveal">
+        <div class="pub-item">
+            <h3>Design, Optimization and Control of a Hydrofoil System for High-Performance Marine Vessels</h3>
+            <div class="venue">ASME OMAE 2025 · Vancouver, Canada</div>
+            <p>Presented a comprehensive framework for hydrofoil vessel design integrating 3-DoF dynamics modeling, LQR-based active ride control, and experimental validation achieving stable foilborne performance.</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="contact-section">
+    <div class="reveal">
+        <div class="section-label">// Get in Touch</div>
+        <h2 class="section-title">Let's Build Something</h2>
+        <p class="section-desc" style="margin: 0 auto 1rem;">
+            I'm actively looking for full-time roles in robotics, autonomous systems, and controls engineering starting Summer 2026.
+        </p>
+        <div class="contact-links">
+            <a href="mailto:bharathvinodmohan@gmail.com">bharathvinodmohan@gmail.com</a>
+            <a href="tel:+13412379222">+1 (341) 237-9222</a>
+            <a href="https://www.linkedin.com/in/vbharathmohan/" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Bharath Mohan · Built with care in Berkeley, CA
+</footer>
+
+<script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 80);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

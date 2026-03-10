@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 400" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <marker id="arr" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#4fd1c5" stroke="none"/>
+    </marker>
+    <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#161619"/>
+      <stop offset="100%" stop-color="#111114"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="400" fill="#0a0a0c" rx="12"/>
+
+  <!-- Title -->
+  <text x="550" y="36" text-anchor="middle" fill="#e8e6e3" font-size="16" font-weight="600" letter-spacing="0.5">Domain Randomization &amp; Training Pipeline</text>
+  <line x1="370" y1="48" x2="730" y2="48" stroke="#1e1e24" stroke-width="1"/>
+
+  <!-- ============ DOMAIN RANDOMIZATION (LEFT) ============ -->
+  <rect x="30" y="70" width="280" height="290" rx="10" fill="url(#cg)" stroke="#1e1e24" stroke-width="1"/>
+  <rect x="30" y="70" width="280" height="3" rx="2" fill="#e8a87c" opacity="0.6"/>
+  <text x="170" y="98" text-anchor="middle" fill="#e8a87c" font-size="10" font-weight="500" letter-spacing="1.5">DOMAIN RANDOMIZATION</text>
+  <text x="170" y="118" text-anchor="middle" fill="#e8e6e3" font-size="12" font-weight="500">Sim-to-Real Robustness</text>
+
+  <!-- Randomization items -->
+  <rect x="50" y="135" width="240" height="42" rx="6" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <circle cx="68" cy="156" r="4" fill="#4fd1c5" opacity="0.7"/>
+  <text x="80" y="152" fill="#e8e6e3" font-size="10" font-weight="500">Trajectory Randomization</text>
+  <text x="80" y="167" fill="#8a8a96" font-size="9">Min-snap &amp; circular paths, N=5 waypoints</text>
+
+  <rect x="50" y="185" width="240" height="52" rx="6" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <circle cx="68" cy="206" r="4" fill="#4fd1c5" opacity="0.7"/>
+  <text x="80" y="200" fill="#e8e6e3" font-size="10" font-weight="500">Vehicle Dynamics</text>
+  <text x="80" y="215" fill="#8a8a96" font-size="9">Mass, inertia, drag coefficient</text>
+  <text x="80" y="229" fill="#8a8a96" font-size="9">Battery voltage variation</text>
+
+  <rect x="50" y="245" width="240" height="42" rx="6" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <circle cx="68" cy="266" r="4" fill="#4fd1c5" opacity="0.7"/>
+  <text x="80" y="262" fill="#e8e6e3" font-size="10" font-weight="500">Wind Disturbances</text>
+  <text x="80" y="277" fill="#8a8a96" font-size="9">Dryden wind field model</text>
+
+  <rect x="50" y="295" width="240" height="52" rx="6" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <circle cx="68" cy="316" r="4" fill="#e8a87c" opacity="0.7"/>
+  <text x="80" y="310" fill="#e8e6e3" font-size="10" font-weight="500">Energy Model Noise</text>
+  <text x="80" y="325" fill="#8a8a96" font-size="9">Q = Σ kQωᵢ³ + c + N(0,10)</text>
+  <text x="80" y="339" fill="#55555f" font-size="8">Gaussian noise on power readings</text>
+
+  <!-- Arrow: Domain Rand → Feature Engineering -->
+  <line x1="310" y1="215" x2="368" y2="215" stroke="#4fd1c5" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="340" y="208" fill="#55555f" font-size="7.5">episodes</text>
+
+  <!-- ============ FEATURE ENGINEERING (CENTER) ============ -->
+  <rect x="373" y="70" width="280" height="172" rx="10" fill="url(#cg)" stroke="#1e1e24" stroke-width="1"/>
+  <rect x="373" y="70" width="280" height="3" rx="2" fill="#4fd1c5" opacity="0.6"/>
+  <text x="513" y="98" text-anchor="middle" fill="#4fd1c5" font-size="10" font-weight="500" letter-spacing="1.5">FEATURE ENGINEERING</text>
+  <text x="513" y="118" text-anchor="middle" fill="#e8e6e3" font-size="12" font-weight="500">Observation Construction</text>
+
+  <text x="393" y="143" fill="#8a8a96" font-size="10">base_obs ∈ ℝ²¹</text>
+  <text x="403" y="161" fill="#8a8a96" font-size="9">→ IMU / gyroscope readings</text>
+  <text x="403" y="177" fill="#8a8a96" font-size="9">→ Battery voltage &amp; current</text>
+  <text x="403" y="193" fill="#8a8a96" font-size="9">→ Control commands</text>
+  <text x="403" y="209" fill="#8a8a96" font-size="9">→ Position tracking errors (×N wp)</text>
+  <text x="403" y="225" fill="#8a8a96" font-size="9">→ Yaw tracking errors (×N wp)</text>
+
+  <!-- Target Construction -->
+  <rect x="373" y="258" width="280" height="100" rx="10" fill="url(#cg)" stroke="#e8a87c" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="373" y="258" width="280" height="3" rx="2" fill="#e8a87c" opacity="0.6"/>
+  <text x="513" y="284" text-anchor="middle" fill="#e8a87c" font-size="10" font-weight="500" letter-spacing="1.5">TARGET CONSTRUCTION</text>
+  <text x="513" y="308" text-anchor="middle" fill="#e8e6e3" font-size="11" font-weight="500">Normalized future-average power</text>
+  <text x="513" y="330" text-anchor="middle" fill="#8a8a96" font-family="'Courier New', monospace" font-size="10.5">P̄ₜ = (1/H) Σ Pₜ₊ₖ</text>
+  <text x="513" y="348" text-anchor="middle" fill="#8a8a96" font-family="'Courier New', monospace" font-size="10.5">yₜ = (P̄ₜ − μP) / 200</text>
+
+  <!-- Arrow down from features to target -->
+  <line x1="513" y1="242" x2="513" y2="255" stroke="#2d7a72" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- Arrow: Feature Eng → Training -->
+  <line x1="653" y1="155" x2="708" y2="155" stroke="#4fd1c5" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="675" y="148" fill="#55555f" font-size="7.5">oₜ, yₜ</text>
+
+  <!-- Arrow: Target → Training -->
+  <line x1="653" y1="308" x2="768" y2="308" stroke="#e8a87c" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="768" y1="308" x2="768" y2="208" stroke="#e8a87c" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- ============ TRAINING (RIGHT) ============ -->
+  <rect x="713" y="70" width="355" height="172" rx="10" fill="url(#cg)" stroke="#4fd1c5" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="713" y="70" width="355" height="3" rx="2" fill="#4fd1c5" opacity="0.8"/>
+  <text x="890" y="98" text-anchor="middle" fill="#4fd1c5" font-size="10" font-weight="500" letter-spacing="1.5">MODEL TRAINING &amp; EVALUATION</text>
+  <text x="890" y="118" text-anchor="middle" fill="#e8e6e3" font-size="12" font-weight="500">Architecture Benchmarking</text>
+
+  <!-- Model chips -->
+  <rect x="733" y="132" width="72" height="30" rx="5" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <text x="769" y="151" text-anchor="middle" fill="#8a8a96" font-size="9.5">RNN</text>
+
+  <rect x="813" y="132" width="72" height="30" rx="5" fill="#1a1a20" stroke="#4fd1c5" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="849" y="151" text-anchor="middle" fill="#4fd1c5" font-size="9.5" font-weight="500">LSTM</text>
+
+  <rect x="893" y="132" width="72" height="30" rx="5" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <text x="929" y="151" text-anchor="middle" fill="#8a8a96" font-size="9.5">Bi-LSTM</text>
+
+  <rect x="973" y="132" width="82" height="30" rx="5" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <text x="1014" y="151" text-anchor="middle" fill="#8a8a96" font-size="9.5">Transformer</text>
+
+  <text x="733" y="185" fill="#8a8a96" font-size="9.5">Evaluation metrics:</text>
+  <text x="743" y="201" fill="#8a8a96" font-size="9">• Convergence speed</text>
+  <text x="743" y="217" fill="#8a8a96" font-size="9">• Prediction accuracy (R²)</text>
+  <text x="743" y="233" fill="#8a8a96" font-size="9">• Generalization across flight conditions</text>
+
+  <!-- Result highlight -->
+  <rect x="713" y="258" width="355" height="52" rx="10" fill="#111114" stroke="#e8a87c" stroke-width="1.5" stroke-opacity="0.4"/>
+  <text x="890" y="280" text-anchor="middle" fill="#e8a87c" font-size="11" font-weight="600">R² = 0.98</text>
+  <text x="890" y="300" text-anchor="middle" fill="#8a8a96" font-size="9.5">Best model achieves 98% prediction accuracy on held-out flight data</text>
+
+  <!-- Pipeline params footer -->
+  <rect x="30" y="370" width="1040" height="22" rx="4" fill="#111114" stroke="#1e1e24" stroke-width="1"/>
+  <text x="550" y="385" text-anchor="middle" fill="#55555f" font-size="9" letter-spacing="0.5">Δt = 0.02s  ·  H = 25 steps (0.5s horizon)  ·  N = 5 waypoints  ·  τᵢ = 5i steps  ·  base_obs ∈ ℝ²¹  ·  Pₜ in Watts</text>
+
+</svg>

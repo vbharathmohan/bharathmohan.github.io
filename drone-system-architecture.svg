@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 520" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#4fd1c5" stroke="none"/>
+    </marker>
+    <marker id="arrow-dim" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+      <path d="M0,0 L8,3 L0,6" fill="#2d7a72" stroke="none"/>
+    </marker>
+    <linearGradient id="card-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#161619"/>
+      <stop offset="100%" stop-color="#111114"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="520" fill="#0a0a0c" rx="12"/>
+
+  <!-- Title -->
+  <text x="550" y="38" text-anchor="middle" fill="#e8e6e3" font-size="16" font-weight="600" letter-spacing="0.5">System Architecture — Energy-Aware Drone Fleet Coordination</text>
+  <line x1="350" y1="50" x2="750" y2="50" stroke="#1e1e24" stroke-width="1"/>
+
+  <!-- ============ ROW 1: SIMULATOR & DATA ============ -->
+
+  <!-- Simulator Box -->
+  <rect x="30" y="80" width="220" height="170" rx="10" fill="url(#card-grad)" stroke="#1e1e24" stroke-width="1"/>
+  <rect x="30" y="80" width="220" height="3" rx="2" fill="#4fd1c5" opacity="0.6"/>
+  <text x="140" y="108" text-anchor="middle" fill="#4fd1c5" font-size="10" font-weight="500" letter-spacing="1.5" text-transform="uppercase">SIMULATOR</text>
+  <text x="140" y="132" text-anchor="middle" fill="#e8e6e3" font-size="12" font-weight="500">Quadrotor Flight Sim</text>
+  <text x="50" y="158" fill="#8a8a96" font-size="10">Randomized trajectories:</text>
+  <text x="60" y="175" fill="#8a8a96" font-size="9.5">• Min-snap &amp; circular paths</text>
+  <text x="60" y="191" fill="#8a8a96" font-size="9.5">• Randomized dynamics</text>
+  <text x="60" y="207" fill="#55555f" font-size="8.5">(mass, inertia, drag, battery)</text>
+  <text x="60" y="225" fill="#8a8a96" font-size="9.5">• Dryden wind model</text>
+  <text x="60" y="241" fill="#8a8a96" font-size="9.5">• N=5 waypoints per flight</text>
+
+  <!-- Arrow: Sim → Raw Data -->
+  <line x1="250" y1="165" x2="295" y2="165" stroke="#4fd1c5" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Raw Telemetry Box -->
+  <rect x="300" y="80" width="220" height="170" rx="10" fill="url(#card-grad)" stroke="#1e1e24" stroke-width="1"/>
+  <rect x="300" y="80" width="220" height="3" rx="2" fill="#e8a87c" opacity="0.6"/>
+  <text x="410" y="108" text-anchor="middle" fill="#e8a87c" font-size="10" font-weight="500" letter-spacing="1.5">RAW TELEMETRY</text>
+  <text x="410" y="132" text-anchor="middle" fill="#e8e6e3" font-size="12" font-weight="500">State Vector s_t</text>
+
+  <text x="320" y="156" fill="#8a8a96" font-size="10">Signals accessed:</text>
+  <text x="330" y="174" fill="#8a8a96" font-size="9.5">p  — position</text>
+  <text x="330" y="190" fill="#8a8a96" font-size="9.5">v  — velocity</text>
+  <text x="330" y="206" fill="#8a8a96" font-size="9.5">Θ  — orientation (yaw, pitch, roll)</text>
+  <text x="330" y="222" fill="#8a8a96" font-size="9.5">ω  — angular velocity</text>
+  <text x="330" y="238" fill="#8a8a96" font-size="9.5">α  — angular acceleration</text>
+
+  <!-- Arrow: Raw → Observation -->
+  <line x1="520" y1="165" x2="565" y2="165" stroke="#4fd1c5" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Observation Vector Box -->
+  <rect x="570" y="80" width="240" height="170" rx="10" fill="url(#card-grad)" stroke="#1e1e24" stroke-width="1"/>
+  <rect x="570" y="80" width="240" height="3" rx="2" fill="#4fd1c5" opacity="0.6"/>
+  <text x="690" y="108" text-anchor="middle" fill="#4fd1c5" font-size="10" font-weight="500" letter-spacing="1.5">OBSERVATION VECTOR</text>
+  <text x="690" y="132" text-anchor="middle" fill="#e8e6e3" font-size="12" font-weight="500">o_t — NN Input</text>
+
+  <text x="590" y="158" fill="#8a8a96" font-size="10">Constructed features:</text>
+  <text x="600" y="176" fill="#8a8a96" font-size="9.5">• base_obs  (IMU/gyro + battery V/I</text>
+  <text x="610" y="192" fill="#8a8a96" font-size="9.5">+ control commands)</text>
+  <text x="600" y="210" fill="#8a8a96" font-size="9.5">• Tracking errors to N waypoints</text>
+  <text x="600" y="226" fill="#8a8a96" font-size="9.5">• Yaw errors to N waypoints</text>
+  <text x="590" y="244" fill="#55555f" font-size="8.5">Δt = 0.02s  |  τᵢ = 5i steps (0.1i s)  |  dim ∈ ℝ²¹</text>
+
+  <!-- Energy Model Box (top right) -->
+  <rect x="845" y="80" width="220" height="170" rx="10" fill="url(#card-grad)" stroke="#1e1e24" stroke-width="1"/>
+  <rect x="845" y="80" width="220" height="3" rx="2" fill="#e8a87c" opacity="0.4"/>
+  <text x="955" y="108" text-anchor="middle" fill="#e8a87c" font-size="10" font-weight="500" letter-spacing="1.5">ENERGY MODEL</text>
+  <text x="955" y="132" text-anchor="middle" fill="#e8e6e3" font-size="12" font-weight="500">Consumption Physics</text>
+
+  <text x="865" y="158" fill="#8a8a96" font-size="10">Motor-dominant model:</text>
+  <text x="875" y="178" fill="#e8e6e3" font-size="11" font-family="'Courier New', monospace">Q = Σ kQωᵢ³ + c + N(0,10)</text>
+  <text x="875" y="198" fill="#55555f" font-size="8.5">4 motors, cubic relation</text>
+  <text x="865" y="222" fill="#8a8a96" font-size="10">Minor sources:</text>
+  <text x="875" y="238" fill="#8a8a96" font-size="9.5">sensors, FCU, onboard computer</text>
+
+  <!-- Arrow: Energy model down to target -->
+  <line x1="955" y1="250" x2="955" y2="295" stroke="#2d7a72" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow-dim)"/>
+
+  <!-- ============ ROW 2: NEURAL NETWORK ============ -->
+
+  <!-- Arrow: Observation → NN -->
+  <line x1="690" y1="250" x2="690" y2="295" stroke="#4fd1c5" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="700" y="278" fill="#55555f" font-size="8">input</text>
+
+  <!-- Neural Network Box (wide, centered) -->
+  <rect x="300" y="300" width="500" height="130" rx="10" fill="url(#card-grad)" stroke="#4fd1c5" stroke-width="1" stroke-opacity="0.3"/>
+  <rect x="300" y="300" width="500" height="3" rx="2" fill="#4fd1c5" opacity="0.8"/>
+  <text x="550" y="328" text-anchor="middle" fill="#4fd1c5" font-size="10" font-weight="500" letter-spacing="1.5">NEURAL NETWORK</text>
+  <text x="550" y="352" text-anchor="middle" fill="#e8e6e3" font-size="13" font-weight="600">Sequence Model Architectures</text>
+
+  <!-- Architecture boxes inside -->
+  <rect x="325" y="368" width="100" height="40" rx="6" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <text x="375" y="392" text-anchor="middle" fill="#8a8a96" font-size="10">RNN</text>
+
+  <rect x="440" y="368" width="100" height="40" rx="6" fill="#1a1a20" stroke="#4fd1c5" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="490" y="392" text-anchor="middle" fill="#4fd1c5" font-size="10" font-weight="500">LSTM</text>
+
+  <rect x="555" y="368" width="100" height="40" rx="6" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <text x="605" y="392" text-anchor="middle" fill="#8a8a96" font-size="10">Bi-LSTM</text>
+
+  <rect x="670" y="368" width="100" height="40" rx="6" fill="#1a1a20" stroke="#2a2a33" stroke-width="1"/>
+  <text x="720" y="392" text-anchor="middle" fill="#8a8a96" font-size="10">Transformer</text>
+
+  <!-- Target label connected to NN -->
+  <text x="955" y="318" text-anchor="middle" fill="#e8a87c" font-size="10" font-weight="500" letter-spacing="1.5">PREDICTION TARGET</text>
+  <rect x="845" y="330" width="220" height="68" rx="8" fill="url(#card-grad)" stroke="#e8a87c" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="955" y="355" text-anchor="middle" fill="#e8e6e3" font-size="11" font-weight="500">Normalized Future-Avg Power</text>
+  <text x="955" y="375" text-anchor="middle" fill="#8a8a96" font-family="'Courier New', monospace" font-size="10">yₜ = (P̄ₜ − μP) / 200</text>
+  <text x="955" y="392" text-anchor="middle" fill="#55555f" font-size="8.5">H = 25 steps (0.5s horizon)</text>
+
+  <!-- Arrow: NN → Target (loss) -->
+  <line x1="800" y1="365" x2="843" y2="365" stroke="#e8a87c" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow-dim)"/>
+  <text x="818" y="358" fill="#55555f" font-size="7.5">loss</text>
+
+  <!-- ============ ROW 3: OUTPUT ============ -->
+
+  <!-- Arrow: NN → Output -->
+  <line x1="550" y1="430" x2="550" y2="462" stroke="#4fd1c5" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Output Box -->
+  <rect x="350" y="467" width="400" height="40" rx="8" fill="#111114" stroke="#4fd1c5" stroke-width="1.5" stroke-opacity="0.4"/>
+  <text x="550" y="492" text-anchor="middle" fill="#4fd1c5" font-size="12" font-weight="600" filter="url(#glow)">Energy Prediction → Fleet-Level Coordination &amp; Routing</text>
+
+  <!-- Decorative corner marks -->
+  <line x1="30" y1="510" x2="80" y2="510" stroke="#1e1e24" stroke-width="1"/>
+  <line x1="30" y1="510" x2="30" y2="495" stroke="#1e1e24" stroke-width="1"/>
+  <line x1="1070" y1="510" x2="1020" y2="510" stroke="#1e1e24" stroke-width="1"/>
+  <line x1="1070" y1="510" x2="1070" y2="495" stroke="#1e1e24" stroke-width="1"/>
+
+</svg>

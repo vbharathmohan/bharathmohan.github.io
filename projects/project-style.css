@@ -135,6 +135,12 @@
     font-size: 0.8rem;
 }
 
+/* VIDEOS */
+.video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
 /* IMAGE PLACEHOLDERS */
 .image-placeholder {
     width: 100%;

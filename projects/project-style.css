@@ -135,12 +135,6 @@
     font-size: 0.8rem;
 }
 
-/* VIDEOS */
-.video {
-    width: 100%;
-    height: auto;
-    border-radius: 10px;
-}
 /* IMAGE PLACEHOLDERS */
 .image-placeholder {
     width: 100%;
@@ -165,8 +159,20 @@
     font-size: 0.68rem;
     color: var(--text-muted);
     text-align: center;
-    margin-top: -0.75rem;
+    margin-top: 0.5rem;
     margin-bottom: 1.5rem;
+}
+
+/* REAL IMAGES & VIDEO */
+.project-hero > img,
+.project-hero > video,
+.content-section > img,
+.content-section > video {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    display: block;
 }
 
 .image-row {
@@ -176,11 +182,12 @@
     margin: 1.5rem 0;
 }
 
-.image-row img {
+.image-row img,
+.image-row video {
     width: 100%;
     height: auto;
     border-radius: 10px;
-    object-fit: contain;
+    display: block;
 }
 
 /* NEXT PROJECT NAVIGATION */

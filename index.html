@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bharath Mohan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;500;600&family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #fafaf9;
+            --text: #1c1917;
+            --text-light: #57534e;
+            --text-muted: #a8a29e;
+            --border: #e7e5e4;
+            --accent: #2563eb;
+            --tag-bg: #f1f5f9;
+            --tag-text: #475569;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        header {
+            padding: 3rem 0 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        header h1 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .header-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1.25rem;
+            flex-wrap: wrap;
+        }
+
+        .header-links a {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .header-links a:hover { text-decoration: underline; }
+
+        section {
+            padding: 2.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-of-type { border-bottom: none; }
+
+        section h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .project {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .project:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .project h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .project-context {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+
+        .project-result {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .project ul {
+            padding-left: 1.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .project li {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.35rem;
+            line-height: 1.6;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            margin-top: 0.5rem;
+        }
+
+        .tag {
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.72rem;
+            padding: 0.2rem 0.55rem;
+            background: var(--tag-bg);
+            color: var(--tag-text);
+            border-radius: 3px;
+        }
+
+        .github-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-family: 'Source Code Pro', monospace;
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .github-link:hover { text-decoration: underline; }
+
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            header { padding: 2rem 0 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+    <h1>Bharath Mohan</h1>
+    <p>M.Eng student at UC Berkeley (Controls and Autonomous Systems). I build things across robotics, machine learning, data engineering, and embedded systems. This page is a simple overview of my projects.</p>
+    <div class="header-links">
+        <a href="mailto:bharathvinodmohan@gmail.com">Email</a>
+        <a href="https://linkedin.com/in/vbharathmohan" target="_blank">LinkedIn</a>
+        <a href="https://github.com/vbharathmohan" target="_blank">GitHub</a>
+    </div>
+</header>
+
+<section>
+    <h2>Projects</h2>
+
+    <div class="project">
+        <h3>Predictive Maintenance Data Pipeline</h3>
+        <div class="project-context">UC Berkeley, 2026</div>
+        <ul>
+            <li>Built an end-to-end data engineering pipeline on Databricks using Medallion Architecture (Bronze, Silver, Gold) to process industrial sensor time-series data</li>
+            <li>Ingested and transformed 160K+ rows of raw sensor data using PySpark, engineering 50+ features including rolling statistics, lag features, and degradation indicators</li>
+            <li>Delivered a Lakeview BI dashboard showing fleet health trends, degradation patterns, and fault mode analysis</li>
+            <li>Used Unity Catalog for data governance and schema enforcement across all pipeline layers</li>
+            <li>Dataset: NASA CMAPSS Turbofan Engine Degradation (4 sub-datasets, 21 sensors per engine)</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">Databricks</span>
+            <span class="tag">PySpark</span>
+            <span class="tag">Delta Lake</span>
+            <span class="tag">Unity Catalog</span>
+            <span class="tag">Lakeview BI</span>
+            <span class="tag">Medallion Architecture</span>
+        </div>
+        <a href="https://github.com/vbharathmohan/cmapss-pipeline" class="github-link" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+        <h3>Turbofan Engine RUL Prediction</h3>
+        <div class="project-context">UC Berkeley, 2026</div>
+        <div class="project-result">R²=0.82 | RMSE=17.90 | Critical-zone F1=0.89</div>
+        <ul>
+            <li>Built an ML pipeline on top of the data engineering Silver layer for predicting engine Remaining Useful Life</li>
+            <li>Engineered 70+ features from 21 sensors: rolling statistics, lag features, rate-of-change, and operational indicators</li>
+            <li>Trained XGBoost regression and classification models with hyperparameter tuning and cross-validation</li>
+            <li>Tracked all experiments in MLflow, logging parameters, metrics, and artifacts; registered best models in Model Registry</li>
+            <li>RUL capped at 125 cycles (standard in CMAPSS literature) to focus the model on the critical degradation window</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">XGBoost</span>
+            <span class="tag">MLflow</span>
+            <span class="tag">Databricks</span>
+            <span class="tag">scikit-learn</span>
+            <span class="tag">Feature Engineering</span>
+            <span class="tag">Pandas</span>
+        </div>
+        <a href="https://github.com/vbharathmohan/cmapss-pipeline" class="github-link" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+        <h3>Neural Networks for Energy-Optimized Drone Fleet Coordination</h3>
+        <div class="project-context">HiPeRLab, UC Berkeley, 2026 (Capstone)</div>
+        <div class="project-result">Best test R²=0.676 | MAE=32.8W (GRU on 209 outdoor flights)</div>
+        <ul>
+            <li>Built an end-to-end deep learning pipeline in PyTorch benchmarking 7 architectures (Linear Reg, MLP, RNN, GRU, LSTM, Bi-LSTM, Transformer) for real-time quadrotor power prediction</li>
+            <li>Processed 240,000+ real-world flight sequences from two datasets: HiPeRLab rosbag data and CMU Package Delivery Drone dataset (209 flights, 5Hz, varying wind and payload conditions)</li>
+            <li>Identified and fixed a critical data leakage bug in the validation split that was causing all models to collapse to predicting the training mean; implemented per-source stratified splitting</li>
+            <li>Performed transformer self-attention analysis revealing that motor power is determined by the last 150 to 400ms of flight state, which is a physically interpretable finding</li>
+            <li>Used this insight to engineer rolling turbulence features, improving non-sequential model performance by up to 1.7% R²</li>
+            <li>GRU model was adopted as the energy prediction component for the team's fleet coordination system</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">RNN</span>
+            <span class="tag">GRU</span>
+            <span class="tag">LSTM</span>
+            <span class="tag">Transformer</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Pandas</span>
+        </div>
+    </div>
+
+    <div class="project">
+        <h3>Multi-Agent Cooperative Defense using Deep Reinforcement Learning</h3>
+        <div class="project-context">UC Berkeley, 2026</div>
+        <div class="project-result">2.4x survival improvement | 15x threat neutralization over baselines</div>
+        <ul>
+            <li>Designed a custom multi-agent simulation environment from scratch in Python with 20 autonomous agents, collision avoidance, and configurable threat dynamics</li>
+            <li>Implemented a Deep Q-Network (DQN) agent in PyTorch with CNN architecture, experience replay buffer (200K capacity), target network stabilization, and epsilon-greedy exploration with tuned decay schedules</li>
+            <li>Trained using centralized training with decentralized execution (CTDE): 20 agents sharing a single CNN but acting independently on local 21x21 observations</li>
+            <li>Built two rule-based baselines: Voronoi tessellation (SciPy) for geometric territory partitioning and Hungarian algorithm for globally optimal agent-threat matching</li>
+            <li>Discovered emergent defender-interceptor role specialization arising from reward shaping and physical constraints, without any explicit role assignment</li>
+            <li>Built a unified evaluation framework with fixed-seed reproducibility and real-time Pygame visualization</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">DQN</span>
+            <span class="tag">SciPy</span>
+            <span class="tag">Pygame</span>
+            <span class="tag">NumPy</span>
+            <span class="tag">Multi-Agent RL</span>
+        </div>
+        <a href="https://github.com/vbharathmohan/multi-agent-defense" class="github-link" target="_blank">View on GitHub</a>
+    </div>
+
+    <div class="project">
+        <h3>Autonomous Surface Vessel: Waypoint Tracking and Control</h3>
+        <div class="project-context">IIT Madras, 2024-2025</div>
+        <ul>
+            <li>Deployed and validated a full ROS-based autonomy stack on a physical autonomous surface vessel</li>
+            <li>Implemented 6-DoF vessel maneuvering dynamics and an Extended Kalman Filter (EKF) for state estimation</li>
+            <li>Developed PID heading control and waypoint tracking using an Integral Line-of-Sight guidance algorithm</li>
+            <li>Tested and debugged the full system on a physical ASV testbed, dealing with real sensor noise and environmental disturbances</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">ROS</span>
+            <span class="tag">Python</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">EKF</span>
+            <span class="tag">PID</span>
+            <span class="tag">Controls</span>
+        </div>
+    </div>
+
+    <div class="project">
+        <h3>Hydrofoil Vessel: Design, Control, and Manufacturing</h3>
+        <div class="project-context">IIT Madras, 2024-2025 | Published at ASME OMAE 2025, Vancouver</div>
+        <div class="project-result">89% drag reduction (7.47kN to 812N) | Stable at 19.4 knots</div>
+        <ul>
+            <li>Led a team through the full lifecycle: foil geometry optimization, 3-DoF dynamics modeling, LQR controller design, physical manufacturing, and towing tank testing</li>
+            <li>Optimized NACA 2415 foil profile for target speed and displacement using MATLAB and low-order flow simulation</li>
+            <li>Designed an LQR controller that modulates foil angle of attack in real time to maintain stable ride height with near-zero pitch</li>
+            <li>Took the project from equations on paper to a physical vessel tested in water</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">LQR</span>
+            <span class="tag">Dynamics Modeling</span>
+            <span class="tag">Hydrodynamics</span>
+            <span class="tag">Manufacturing</span>
+        </div>
+    </div>
+
+    <div class="project">
+        <h3>AURA-SYNTH: Real-Time Gestural Audio Engine</h3>
+        <div class="project-context">UC Berkeley, 2026</div>
+        <ul>
+            <li>Designed and built the complete audio processing software for a gesture-controlled musical instrument running entirely on an ESP32 microcontroller with no external computer</li>
+            <li>Architected a dual-core real-time audio engine processing at 44.1kHz stereo using FreeRTOS, with zero-allocation memory management via a pre-allocated block pool</li>
+            <li>Implemented a multi-stage DSP pipeline: wavetable oscillators (sine + detuned sawtooth), biquad IIR low-pass filters, LFO tremolo modulation, pitch bend, and PSRAM-backed delay effects</li>
+            <li>Built a polyphonic sample playback engine reading flash-embedded WAV files, supporting 8 simultaneous voices with oldest-voice stealing and pitch shifting across 8 time-of-flight sensor zones</li>
+            <li>Designed a multi-track gesture loop recorder storing compact control frames at 86Hz in PSRAM, with record/overdub/playback state machine for live layering</li>
+            <li>Defined the cross-core communication protocol (mutex-protected shared state struct) enabling independent development across a 4-person team: Core 0 for sensing, Core 1 for audio</li>
+        </ul>
+        <div class="tags">
+            <span class="tag">C</span>
+            <span class="tag">ESP-IDF</span>
+            <span class="tag">FreeRTOS</span>
+            <span class="tag">I2S/DMA</span>
+            <span class="tag">PSRAM</span>
+            <span class="tag">DSP</span>
+            <span class="tag">ESP32</span>
+        </div>
+    </div>
+
+</section>
+
+<section>
+    <h2>Publication</h2>
+    <div class="project" style="border-bottom:none; padding-bottom:0; margin-bottom:0;">
+        <h3>Design, Optimization and Control of a Hydrofoil System for High-Performance Marine Vessels</h3>
+        <div class="project-context">ASME OMAE 2025, Vancouver, Canada</div>
+    </div>
+</section>
+
+<section>
+    <h2>Education</h2>
+    <div class="project">
+        <h3>University of California, Berkeley</h3>
+        <div class="project-context">M.Eng in Mechanical Engineering, Control of Robotic and Autonomous Systems (May 2026)</div>
+    </div>
+    <div class="project" style="border-bottom:none; padding-bottom:0; margin-bottom:0;">
+        <h3>Indian Institute of Technology Madras</h3>
+        <div class="project-context">B.Tech with Honours in Naval Architecture and Ocean Engineering (Jul 2025) | GPA: 9.16/10 | Rank: 3/70+</div>
+    </div>
+</section>
+
+</div>
+
+<footer>
+    Bharath Mohan, 2026
+</footer>
+
+</body>
+</html>

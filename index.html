@@ -174,7 +174,7 @@
     <div class="header-links">
         <a href="mailto:bharathvinodmohan@gmail.com">Email</a>
         <a href="https://linkedin.com/in/vbharathmohan" target="_blank">LinkedIn</a>
-        <a href="https://github.com/vbharathmohan" target="_blank">GitHub</a>
+        <a href="https://github.com/vbharathmohan/bharath-data-portfolio" target="_blank">GitHub</a>
     </div>
 </header>
 
@@ -184,6 +184,7 @@
     <div class="project">
         <h3>Predictive Maintenance Data Pipeline</h3>
         <div class="project-context">UC Berkeley, 2026</div>
+        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0.75rem;">Built a production-style data pipeline to process turbofan engine sensor data and surface fleet health insights for predictive maintenance.</p>
         <ul>
             <li>Built an end-to-end data engineering pipeline on Databricks using Medallion Architecture (Bronze, Silver, Gold) to process industrial sensor time-series data</li>
             <li>Ingested and transformed 160K+ rows of raw sensor data using PySpark, engineering 50+ features including rolling statistics, lag features, and degradation indicators</li>
@@ -206,6 +207,7 @@
         <h3>Turbofan Engine RUL Prediction</h3>
         <div class="project-context">UC Berkeley, 2026</div>
         <div class="project-result">R²=0.82 | RMSE=17.90 | Critical-zone F1=0.89</div>
+        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0.75rem;">ML pipeline built on top of the data engineering project, predicting when turbofan engines will fail using sensor readings and engineered features.</p>
         <ul>
             <li>Built an ML pipeline on top of the data engineering Silver layer for predicting engine Remaining Useful Life</li>
             <li>Engineered 70+ features from 21 sensors: rolling statistics, lag features, rate-of-change, and operational indicators</li>
@@ -228,6 +230,7 @@
         <h3>Neural Networks for Energy-Optimized Drone Fleet Coordination</h3>
         <div class="project-context">HiPeRLab, UC Berkeley, 2026 (Capstone)</div>
         <div class="project-result">Best test R²=0.676 | MAE=32.8W (GRU on 209 outdoor flights)</div>
+        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0.75rem;">Capstone research project at UC Berkeley's HiPeR Lab investigating which neural network architectures best predict quadrotor energy consumption from real flight telemetry.</p>
         <ul>
             <li>Built an end-to-end deep learning pipeline in PyTorch benchmarking 7 architectures (Linear Reg, MLP, RNN, GRU, LSTM, Bi-LSTM, Transformer) for real-time quadrotor power prediction</li>
             <li>Processed 240,000+ real-world flight sequences from two datasets: HiPeRLab rosbag data and CMU Package Delivery Drone dataset (209 flights, 5Hz, varying wind and payload conditions)</li>
@@ -251,6 +254,7 @@
         <h3>Multi-Agent Cooperative Defense using Deep Reinforcement Learning</h3>
         <div class="project-context">UC Berkeley, 2026</div>
         <div class="project-result">2.4x survival improvement | 15x threat neutralization over baselines</div>
+        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0.75rem;">Built a full simulation and RL training pipeline to study how 20 autonomous agents can coordinate to defend a target, comparing learned strategies against classical approaches.</p>
         <ul>
             <li>Designed a custom multi-agent simulation environment from scratch in Python with 20 autonomous agents, collision avoidance, and configurable threat dynamics</li>
             <li>Implemented a Deep Q-Network (DQN) agent in PyTorch with CNN architecture, experience replay buffer (200K capacity), target network stabilization, and epsilon-greedy exploration with tuned decay schedules</li>
@@ -273,6 +277,7 @@
     <div class="project">
         <h3>Autonomous Surface Vessel: Waypoint Tracking and Control</h3>
         <div class="project-context">IIT Madras, 2024-2025</div>
+        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0.75rem;">Developed a complete autonomy stack for a surface vessel covering dynamics, estimation, control, and guidance, and deployed it on physical hardware.</p>
         <ul>
             <li>Deployed and validated a full ROS-based autonomy stack on a physical autonomous surface vessel</li>
             <li>Implemented 6-DoF vessel maneuvering dynamics and an Extended Kalman Filter (EKF) for state estimation</li>
@@ -293,6 +298,7 @@
         <h3>Hydrofoil Vessel: Design, Control, and Manufacturing</h3>
         <div class="project-context">IIT Madras, 2024-2025 | Published at ASME OMAE 2025, Vancouver</div>
         <div class="project-result">89% drag reduction (7.47kN to 812N) | Stable at 19.4 knots</div>
+        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0.75rem;">Led a team through the full lifecycle of a hydrofoil vessel, from foil design and active ride control through manufacturing and physical testing in a towing tank. Published at ASME OMAE 2025.</p>
         <ul>
             <li>Led a team through the full lifecycle: foil geometry optimization, 3-DoF dynamics modeling, LQR controller design, physical manufacturing, and towing tank testing</li>
             <li>Optimized NACA 2415 foil profile for target speed and displacement using MATLAB and low-order flow simulation</li>
@@ -311,6 +317,7 @@
     <div class="project">
         <h3>AURA-SYNTH: Real-Time Gestural Audio Engine</h3>
         <div class="project-context">UC Berkeley, 2026</div>
+        <p style="font-size: 0.92rem; color: var(--text-light); margin-bottom: 0.75rem;">Designed the complete audio processing software for a self-contained gestural music instrument that translates hand movements into real-time sound synthesis and sample playback, running entirely on an ESP32 with no external computer.</p>
         <ul>
             <li>Designed and built the complete audio processing software for a gesture-controlled musical instrument running entirely on an ESP32 microcontroller with no external computer</li>
             <li>Architected a dual-core real-time audio engine processing at 44.1kHz stereo using FreeRTOS, with zero-allocation memory management via a pre-allocated block pool</li>
